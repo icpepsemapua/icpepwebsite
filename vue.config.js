@@ -2,12 +2,12 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        prependData: `
-            @import "@/scaffolding/sass/abstracts/_variables.scss";
-            @import "@/scaffolding/sass/abstracts/_functions.scss";
-            @import "@/scaffolding/sass/abstracts/_mixins.scss";
-          `,
-      },
-    },
-  },
+        data: `
+            @import "@/scaffolding/sass/_variables.scss";
+            @import "@/scaffolding/sass/_functions.scss";
+            @import "@/scaffolding/sass/_mixins.scss";
+          `
+      }
+    }
+  }
 };
