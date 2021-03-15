@@ -16,15 +16,18 @@
     </div>
     
     <div class="facts">
-      <h1>{{fact1}}</h1>
+      <ul>
+        <li v-for="fact in facts" v-bind:key="fact">{{fact}}</li>
+      </ul>
     </div>
-    <div class="facts">
-      <h1>{{fact2}}</h1>
+    <div class="FAQ">
+      <div class="label">
+        <h1 id="FA">FA</h1>
+        <br>
+        <h1>QS</h1>
+      </div>
     </div>
-    <div class="facts">
-      <h1>{{fact3}}</h1>
-    </div>
-    
+    <h1>Hello world</h1>
   </div>
 </template>
 <script>
@@ -37,10 +40,17 @@ export default {
             title2:"MISSION",
             message2:"The Organization shall provide the academic needs of computer engineering students in the Institute through the use of collaborative learning",
             message3:"The Organization shall provide relevant content and projects to the members without resorting to the use of illegitimate means or promoting unethical practices in attaining a better academic standing.",
-            fact1: "The nodes at the end of circuit paths connecting to the pin ports of the process represents the core values of the organization.",
-            fact2: "The circuit path connecting the nodes to the processor represent the attachment of the core values to the organization. ",
-            fact3: "The 4 lines connecting the processor to the top horizontal line represent the governing bodies of the organization: faculty advisor, board of directors, executive committee, committee chairs.",
-
+            facts: ["The nodes at the end of circuit paths connecting to the pin ports of the process represents the core values of the organization.",
+                    "The circuit path connecting the nodes to the processor represent the attachment of the core values to the organization.",
+                    "The 4 lines connecting the processor to the top horizontal line represent the governing bodies of the organization: faculty advisor, board of directors, executive committee, committee chairs.",
+                    "The 1 line connecting the processor to the bottom horizontal line represents the members of the organization.",
+                    "The two horizontal lines connect the whole system as a closed circuit.",
+                    "The top horizontal line represents logic high positive power line.",
+                    "The bottom horizontal line represents logic low power line. Following the electron flow of current, the members are connected to the GND line because power comes first from the negative side towards the positive side. You have to be a member first if you want to reach the official positions.",
+                    "The processor chip is an embedded system that represents the organization, composed of different people of different skills, working together to uplift, and accomplish the mission of the organization.",
+                    "The processor chip design resembles somewhat of a tree. We as technologist should aim for development of greener technology. And that at the 'roots' of the tree, the support of the organization, are the members of the organization."
+                    ]
+            
         }
     },
 }
@@ -90,19 +100,47 @@ export default {
 }
 .facts{
   text-align: left;
-  margin-left: 12.5em;
+  margin-left: 7.5em;
   margin-right: 7.5em;
-  display: list-item;
   list-style-image: url('../assets/bullet.png');
   padding-left: 2em;
   padding-right: 2em;
-  h1{
-    
+  li{
+    margin-bottom: 1rem;
+    padding-left: 1em;
+    padding-bottom: 0.5em;
     font-size: 1.5rem;
     font-family: "Ubuntu";
     font-weight: 400;
   }
+}
 
+.FAQ{
+  background-image: url("../assets/half_banner.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 22.5em;
+  width:100%;
+  text-align: left;
+  .label{
+    height: 10em;
+    width: 10em;
+    h1{
+      font-family: 'VT323', monospace;
+      font-weight: 400;
+      margin:0 auto;
+      color: white;
+      font-size: 10rem;
+      text-align: left;
+      
+      
+    }
+    
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 0.2rem;
+    
+  }
+  
 }
 
 
