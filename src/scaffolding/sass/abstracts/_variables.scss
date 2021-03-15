@@ -50,3 +50,26 @@ $breakpoints: (
 /// @example scss - When using a CDN
 ///   $base-url: 'http://cdn.example.com/assets/';
 $base-url: "/assets/" !default;
+
+//////////////////////////////////////////
+/// START OF ICPEP PALETTE
+
+/// Yellow
+/// @type Color
+$yellow: rgb(247, 233, 160) !default;
+
+/// Pink
+/// @type Color
+$pink: rgb(247, 109, 109) !default;
+
+/// Blue
+/// @type Color
+$blue: rgb(55, 71, 133) !default;
+
+/// Light blue
+/// @type Color
+$light-blue: rgb(168, 209, 231) !default;
+
+/// Dark blue
+/// @type Color
+$dark-blue: rgb(36, 49, 94) !default;
