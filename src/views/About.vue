@@ -22,12 +22,9 @@
     </div>
     <div class="FAQ">
       <div class="label">
-        <h1 id="FA">FA</h1>
-        <br>
-        <h1>QS</h1>
+        <h1>FAQs</h1>
       </div>
     </div>
-    <h1>Hello world</h1>
   </div>
 </template>
 <script>
@@ -122,6 +119,7 @@ export default {
   height: 22.5em;
   width:100%;
   text-align: left;
+  margin:0;
   .label{
     height: 10em;
     width: 10em;
@@ -132,8 +130,7 @@ export default {
       color: white;
       font-size: 10rem;
       text-align: left;
-      
-      
+      padding: 5rem;
     }
     
     -webkit-text-stroke-color: black;
