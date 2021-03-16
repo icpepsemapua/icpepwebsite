@@ -1,0 +1,118 @@
+/*header*/
+        .header
+            {
+                position: fixed;
+                width: 100%;
+                height: auto;
+                left: 0px;
+                top: 0px;
+
+                background: rgba(0, 0, 0, 0.56);
+                padding-top: 85px;
+                padding-left: 1579.8px;
+            }
+        img.logo
+            {
+                position: fixed;
+                width: 67px;
+                height: 67px;
+                left: 25px;
+                top: 9px;
+            }
+        p.icpep
+            {
+                position: fixed;
+                width: 171px;
+                height: 28px;
+                left: 108px;
+                top: 5px;
+
+                font-family: Ubuntu;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 24px;
+                line-height: 28px;
+                /* identical to box height */
+
+                display: flex;
+                align-items: center;
+                text-align: center;
+                letter-spacing: -0.015em;
+
+                color: #FFFFFF;
+            }
+        .header_item
+            {
+                position: fixed;
+                width: 65px;
+                height: 28px;
+                top: 5px;
+
+                font-family: Ubuntu;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 24px;
+                line-height: 28px;
+                /* identical to box height */
+
+
+                color: #C8BCBC;
+                
+
+            }
+        
+            .circle
+            {
+                position: fixed;
+                width: 65px;
+                height: 65px;
+                left: 1333px;
+                top: 9px;
+
+                background: #C4C4C4;
+                border: 1px solid rgba(0, 0, 0, 0.5);
+                box-sizing: border-box;
+                border-radius: 50px; 
+            }
+            .icon
+            {
+                position: fixed;
+                width: 50px;
+                height: 46px;
+                left: 1340px;
+                top: 19px;
+                
+                filter: invert(100%) sepia(66%) saturate(0%) hue-rotate(21deg) brightness(109%) contrast(100%);
+            }
+/* link styling */
+            a:link {
+              color: #C8BCBC;
+              background-color: transparent;
+              text-decoration: none;
+            }
+
+            a:visited {
+              color: #C8BCBC;
+              background-color: transparent;
+              text-decoration: none;
+            }
+
+            a:hover {
+              color: midnightblue;
+              background-color: transparent;
+              text-decoration: none;
+            }
+
+            a:active {
+              color: white;
+              background-color: transparent;
+              text-decoration: underline;
+            }
+            
+
+            .main
+            {
+                width:1080px;
+                height: 700px;
+            }
+        
