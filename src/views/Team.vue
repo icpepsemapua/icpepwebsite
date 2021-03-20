@@ -22,7 +22,9 @@
         </div>
       </div>
     </div>
-    <div class="art-used"></div>
+    <div class="art-used">
+      <div class="slanted"></div>
+    </div>
     <div class="divider"></div>
     <div class="officers-list">
       <div class="header-officer">ICPEP.SE OFFICERS</div>
@@ -32,6 +34,7 @@
           :key="officer.id"
           :name="officer.name"
           :role="officer.role"
+          :img="officer.img"
         />
       </div>
     </div>
@@ -40,10 +43,10 @@
       <div class="header-officer">WEB DEVELOPMENT TEAM</div>
       <div class="profile-officers-wrapper">
         <TeamProfiles
-          v-for="officer in officers"
+          v-for="officer in webdev"
           :key="officer.id"
           :name="officer.name"
-          :role="officer.role"
+          :img="officer.img"
         />
       </div>
     </div>
@@ -54,6 +57,7 @@
 <script>
 import TeamProfiles from "../components/TeamProfiles.vue";
 import { officers } from "../assets/officers";
+import { webdev } from "../assets/webdev";
 // import { reactive } from "vue";
 export default {
   components: { TeamProfiles },
@@ -62,9 +66,10 @@ export default {
     //   officer: officers,
     // });
     return {
-      officers
+      officers,
+      webdev,
     };
-  }
+  },
 };
 </script>
 
@@ -114,13 +119,12 @@ export default {
 
       .profile-circle {
         background: #c4c4c4;
-        margin: 5vw;
         border: 5px solid #fff;
         box-sizing: border-box;
-        min-height: 20vw;
-        max-height: 20vw;
-        min-width: 20vw;
-        max-width: 20vw;
+        min-height: 25vw;
+        max-height: 25vw;
+        min-width: 25vw;
+        max-width: 25vw;
         @media only screen and (max-width: 1000px) {
           flex-direction: column;
           min-height: 50vw;
@@ -214,12 +218,12 @@ export default {
     font-style: normal;
     font-weight: 900;
     padding: 2vw;
-    font-size: 5em;
+    font-size: 5rem;
     text-align: center;
     align-items: center;
     letter-spacing: 0.2em;
     @media only screen and (max-width: 800px) {
-      font-size: 2em;
+      font-size: 2rem;
     }
     color: #24315e;
   }
@@ -238,12 +242,12 @@ export default {
     }
     @media only screen and (max-width: 600px) {
       grid-template-columns: auto;
-
       margin: 0 2vw;
     }
   }
 }
-.web .divider {
+
+.divider {
   margin: 3vh auto;
 
   width: 50vw;

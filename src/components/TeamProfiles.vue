@@ -1,6 +1,6 @@
 <template lang="">
   <div class="indiv-profile">
-    <div class="indiv-picture"></div>
+    <img class="picture" :src="img" />
     <div class="name">{{ name }}</div>
     <div class="title">{{ role }}</div>
   </div>
@@ -9,13 +9,16 @@
 export default {
   name: "TeamProfiles",
   props: {
+    img: {
+      type: String,
+    },
     name: {
-      type: String
+      type: String,
     },
     role: {
-      type: String
-    }
-  }
+      type: String,
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -23,28 +26,32 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
 
 .indiv-profile {
-  padding-top: 0.7em;
-  padding-bottom: 0.7em;
-  margin: 1em;
-  width: 18em;
-  max-height: 7em;
+  padding-bottom: 11px;
+  margin: 16px;
+  width: 288px;
+  min-height: 122px;
   background: #fffceb;
   border: 5px solid #24315e;
   box-sizing: border-box;
+
+  .picture {
+    width: 100%;
+    height: auto;
+  }
   .name {
-    font-size: 1.4em;
+    font-size: 22px;
     color: #f76d6d;
     font-family: "Roboto", sans-serif;
-    padding-top: 0.8em;
+    padding-top: 13px;
     font-weight: 900;
   }
   .title {
-    font-size: 0.9rem;
+    font-size: 15px;
     color: #24315e;
     font-family: "Ubuntu", sans-serif;
     font-weight: 300;
-    padding-top: 0.3em;
-    padding-bottom: 0.8em;
+    padding-top: 5px;
+    padding-bottom: 13px;
   }
 }
 </style>
