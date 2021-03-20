@@ -10,12 +10,12 @@ export default {
   name: "TeamProfiles",
   props: {
     name: {
-      type: String,
+      type: String
     },
     role: {
-      type: String,
-    },
-  },
+      type: String
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

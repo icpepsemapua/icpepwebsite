@@ -62,9 +62,9 @@ export default {
     //   officer: officers,
     // });
     return {
-      officers,
+      officers
     };
-  },
+  }
 };
 </script>
 
