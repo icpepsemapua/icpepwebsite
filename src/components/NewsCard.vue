@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <div class="image-container">
-      <img class="image" v-bind:src="imageUrl" v-bind:alt="imageUrl" />
+      <img class="image" v-bind:src="image" v-bind:alt="image" />
     </div>
     <div class="text-container">
       <h2 class="headline">{{ headline }}</h2>
-      <p class="content">{{ content }}</p>
+      <p v-snip="6" class="content">{{ content }}</p>
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@
 export default {
   name: "NewsCard",
   props: {
-    imageUrl: String,
+    image: String,
     headline: String,
     content: String
   }
@@ -26,18 +26,19 @@ export default {
   display: flex;
   flex-direction: row;
   margin: 50px;
-  max-height: 386px;
-}
-.image {
-  width: 663px;
-  height: 386px;
+  max-height: 450px;
 }
 .text-container {
   display: flex;
   flex-direction: column;
   margin-left: 100px;
+  margin-top: auto;
+  margin-bottom: auto;
   text-align: left;
-  overflow: hidden;
+}
+.image {
+  width: 650px;
+  height: 400px;
 }
 .headline {
   font-family: Ubuntu;
@@ -51,11 +52,12 @@ export default {
 .content {
   font-family: Montserrat;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   font-size: 18px;
   line-height: 50px;
   letter-spacing: -0.015em;
   color: rgba(0, 0, 0, 0.8);
+  text-align: justify;
 
   margin-top: 15px;
 }
