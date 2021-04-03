@@ -74,11 +74,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 .home-team-wrapper {
   background: #f7e9a0;
   padding: 5vw 0;
@@ -211,8 +206,7 @@ export default {
   }
 }
 .officers-list {
-  &.web {
-  }
+  // &.web {}
   .header-officer {
     font-family: "Roboto", sans-serif;
     font-style: normal;
