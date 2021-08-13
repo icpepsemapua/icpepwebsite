@@ -341,8 +341,8 @@ body {
 }
 
 .divider {
-  margin: 7vh auto;
-  width: 50vw;
+  margin: 3vw auto;
+  width: 70vw;
   border: 5px solid #a8d1e7;
 }
 
