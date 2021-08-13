@@ -8,7 +8,10 @@
           <div class="dots__circle yellow"></div>
         </div>
         <div class="board">
-          <img class="profile-circle" />
+          <img
+            class="profile-circle"
+            src="../../public/participants/Yang.png"
+          />
           <div class="profile-detail">
             <div class="detail-name">Thea Denisse C. Foronda</div>
             <div class="detail-title">WEB DEVELOPERS TEAM LEADER</div>
@@ -59,6 +62,9 @@
       </div>
     </div>
     <div class="divider"></div>
+    <div class="end-text">
+      JOIN AND BE THE NEXT BUILDERS OF ICpEP.SE - MAPUA!
+    </div>
   </div>
 </template>
 
@@ -335,9 +341,25 @@ body {
 }
 
 .divider {
-  margin: 3vh auto;
-
+  margin: 7vh auto;
   width: 50vw;
   border: 5px solid #a8d1e7;
+}
+
+.end-text {
+  /* JOIN AND BE THE NEXT BUILDERS OF ICpEP.SE - MAPUA! */
+  margin-bottom: 40px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 30px;
+  /* identical to box height, or 120% */
+  display: flex;
+  justify-content: center;
+  letter-spacing: 0.1em;
+
+  color: #24315e;
+
+  text-shadow: 2px 2px 0px #f7e9a0;
 }
 </style>
