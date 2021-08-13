@@ -2,7 +2,11 @@
   <div class="team">
     <div class="home-team-wrapper">
       <div class="home-team">
-        <div class="dots">. . .</div>
+        <div class="dots">
+          <div class="dots__circle red"></div>
+          <div class="dots__circle green"></div>
+          <div class="dots__circle yellow"></div>
+        </div>
         <div class="board">
           <img class="profile-circle" />
           <div class="profile-detail">
@@ -23,7 +27,11 @@
       </div>
     </div>
     <div class="art-used">
-      <div class="slanted"></div>
+      <img src="../assets/ArtUsedText.svg" class="art-used-text" />
+    </div>
+    <div class="art-container">
+      <img src="../assets/ArtUsed.png" class="art" />
+      <p class="artist">Cristelle Corpuz</p>
     </div>
     <div class="divider"></div>
     <div class="officers-list">
@@ -74,8 +82,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 .home-team-wrapper {
   background: #f7e9a0;
+  position: relative;
   padding: 5vw 0;
   @media only screen and (max-width: 900px) {
     padding: 3vw;
@@ -95,6 +109,31 @@ export default {
 
     .dots {
       height: 3em;
+      display: flex;
+      .dots__circle.red {
+        height: 32px;
+        width: 32px;
+        margin: 10px;
+        margin-right: 16px;
+        border-radius: 15px;
+        background: #860519;
+      }
+      .dots__circle.green {
+        height: 32px;
+        width: 32px;
+        margin: 10px;
+        margin-right: 16px;
+        border-radius: 15px;
+        background: #c3cd92;
+      }
+      .dots__circle.yellow {
+        height: 32px;
+        width: 32px;
+        margin: 10px;
+        margin-right: 16px;
+        border-radius: 15px;
+        background: #ffe600;
+      }
     }
 
     .board {
@@ -205,6 +244,60 @@ export default {
     }
   }
 }
+
+.art-used {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  @media only screen and (max-width: 1400px) {
+    bottom: -20px;
+  }
+  @media only screen and (max-width: 500px) {
+    bottom: -10px;
+  }
+}
+
+.art-used-text {
+  position: relative;
+  width: 100%;
+  height: 16vw;
+  object-fit: cover;
+  transform: skewY(-3.87deg);
+  transform-origin: top right;
+  margin-bottom: 60px;
+}
+
+.art-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  margin: 0 auto;
+  margin-top: 30px;
+  @media only screen and (max-width: 1400px) {
+    max-width: 90%;
+  }
+}
+.artist {
+  font-family: "VT323", monospace;
+  color: #f76d6d;
+  font-size: 70px;
+  width: 90%;
+  margin: 0;
+  text-align: left;
+}
+.home-team-wrapper::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #f7e9a0;
+  transform: skewY(-3.87deg);
+  transform-origin: top right;
+  z-index: -1;
+}
+
 .officers-list {
   // &.web {}
   .header-officer {
