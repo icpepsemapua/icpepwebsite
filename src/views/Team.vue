@@ -250,7 +250,6 @@ body {
     }
   }
 }
-
 .art-used {
   display: flex;
   position: relative;
@@ -303,7 +302,6 @@ body {
   transform-origin: top right;
   z-index: -1;
 }
-
 .officers-list {
   // &.web {}
   .header-officer {
