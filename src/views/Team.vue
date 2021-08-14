@@ -63,7 +63,7 @@
     </div>
     <div class="divider"></div>
     <div class="end-text">
-      JOIN AND BE THE NEXT BUILDERS OF ICpEP.SE - MAPUA!
+      JOIN AND BE THE NEXT BUILDERS OF ICpEP.SE - MAPÚA!
     </div>
   </div>
 </template>
@@ -155,22 +155,27 @@ body {
         background: #c4c4c4;
         border: 5px solid #fff;
         box-sizing: border-box;
-        min-height: 25vw;
-        max-height: 25vw;
-        min-width: 25vw;
-        max-width: 25vw;
+        min-height: 350px;
+        max-height: 350px;
+        min-width: 350px;
+        max-width: 350px;
         @media only screen and (max-width: 1000px) {
           flex-direction: column;
-          min-height: 50vw;
-          max-height: 50vw;
-          min-width: 50vw;
-          max-width: 50vw;
-        }
-        border-radius: 50%;
-        @media only screen and (max-width: 1000px) {
+          min-height: 45vw;
+          max-height: 45vw;
+          min-width: 45vw;
+          max-width: 45vw;
           margin-left: auto;
           margin-right: auto;
+          margin-top: 20px;
         }
+        @media only screen and (max-width: 500px) {
+          min-height: 55vw;
+          max-height: 55vw;
+          min-width: 55vw;
+          max-width: 55vw;
+        }
+        border-radius: 50%;
       }
       .profile-detail {
         padding-left: 3em;
@@ -217,7 +222,7 @@ body {
           padding-top: 1.5vw;
           .to-officers {
             margin-right: 1.5vw;
-            background: #ff268a;
+            background: #5879eb;
             font-family: "Roboto", sans-serif;
             font-style: normal;
             font-weight: bold;
