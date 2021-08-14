@@ -3,9 +3,9 @@
     <div class="home-team-wrapper">
       <div class="home-team">
         <div class="dots">
-          <div class="dots__circle red"></div>
-          <div class="dots__circle green"></div>
-          <div class="dots__circle yellow"></div>
+          <div class="dots__circle dots__circle--red"></div>
+          <div class="dots__circle dots__circle--green"></div>
+          <div class="dots__circle dots__circle--yellow"></div>
         </div>
         <div class="board">
           <img
@@ -116,29 +116,23 @@ body {
     .dots {
       height: 3em;
       display: flex;
-      .dots__circle.red {
+
+      &__circle {
         height: 32px;
         width: 32px;
         margin: 10px;
         margin-right: 16px;
         border-radius: 15px;
-        background: #860519;
-      }
-      .dots__circle.green {
-        height: 32px;
-        width: 32px;
-        margin: 10px;
-        margin-right: 16px;
-        border-radius: 15px;
-        background: #c3cd92;
-      }
-      .dots__circle.yellow {
-        height: 32px;
-        width: 32px;
-        margin: 10px;
-        margin-right: 16px;
-        border-radius: 15px;
-        background: #ffe600;
+
+        &--red {
+          background: #860519;
+        }
+        &--green {
+          background: #c3cd92;
+        }
+        &--yellow {
+          background: #ffe600;
+        }
       }
     }
 
