@@ -1,10 +1,10 @@
 <template lang="">
-  <div class="news">
-    <img class="news__item news__item--image" :src="img" />
-    <div class="news__item news__item--title">{{ title }}</div>
-    <div class="news__item news__item--type">{{ type }}</div>
-    <div class="news__item news__item--desc">{{ desc }}</div>
-    <div class="news__item news__item--date">
+  <div class="event">
+    <img class="event__item event__item--image" :src="img" />
+    <div class="event__item event__item--title">{{ title }}</div>
+    <div class="event__item event__item--type">{{ type }}</div>
+    <div class="event__item event__item--desc">{{ desc }}</div>
+    <div class="event__item event__item--date">
       <!-- div is a block element -->
       <!-- div doesnt help continue the line for text -->
       <span>
@@ -25,14 +25,14 @@
         {{ endDate.getHours() >= 12 ? " PM" : " AM" }}
       </span>
     </div>
-    <div class="news__item news__item--info" v-if="showNewsButton">
+    <div class="event__item event__item--info" v-if="showEventButton">
       More Information
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: "NewsItem",
+  name: "EventItem",
   computed: {
     months() {
       return [
@@ -67,7 +67,7 @@ export default {
     date: {
       type: String,
     },
-    showNewsButton: {
+    showEventButton: {
       type: Boolean,
     },
     endDate: {
@@ -77,7 +77,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.news {
+.event {
   height: 550px;
   width: 400px;
   background: #24315e;
