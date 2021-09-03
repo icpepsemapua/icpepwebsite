@@ -1,10 +1,18 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/news">News</router-link> |
-    <router-link to="/team">Team</router-link> |
-    <router-link to="/events">Events</router-link>
+    <div class="org__container">
+      <img class="logo" src="./assets/logo.svg" />
+      <p class="name">ICPEP.SE - Mapúa</p>
+    </div>
+    <div class="router__container">
+      <div class="router__buttons">
+        <router-link class="router__button" to="/">Home</router-link>
+        <router-link class="router__button" to="/about">About</router-link>
+        <router-link class="router__button" to="/news">News</router-link>
+        <router-link class="router__button" to="/team">Team</router-link>
+        <router-link class="router__button" to="/events">Events</router-link>
+      </div>
+    </div>
   </div>
   <router-view />
   <div class="footer">
@@ -32,6 +40,9 @@
 <script>
 export default {
   methods: {
+    homeClicked(e) {
+      this.$emit(e, "hello");
+    },
     linkToWeb(link) {
       switch (link) {
         case "fb":
@@ -47,11 +58,35 @@ export default {
       }
     },
   },
+  watch: {
+    $route(to, from) {
+      console.log("to, ", JSON.stringify({ to, from }));
+      switch (to.path) {
+        default: {
+          document.body.className = (to.path || "").replace("/", "");
+        }
+      }
+    },
+  },
 };
 </script>
-
 <style lang="scss">
 @import "./scaffolding/sass/main.scss";
+
+body {
+  &.about {
+    background-color: #fffcf3;
+  }
+  &.news {
+    background-color: #364d9b;
+  }
+  &.team {
+    background-color: #f7e9a0;
+  }
+  &.events {
+    background-color: #bcc9f8;
+  }
+}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -62,14 +97,64 @@ export default {
 }
 
 #nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.56);
+  padding: 10px 25px;
+  display: grid;
+  grid-template-columns: 298px 1fr;
+  @media only screen and (max-width: 900px) {
+    grid-template-columns: 1fr 3fr;
+  }
+  align-content: center;
+  .org__container {
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    .logo {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto;
+    }
+    .name {
+      font-family: "Ubuntu", sans-serif;
+      font-size: 24px;
+      color: rgb(255, 255, 255);
+      margin-left: 10px;
+      @media only screen and (max-width: 900px) {
+        display: none;
+      }
+    }
+  }
+  .router__container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: right;
+    .router__buttons {
+      max-width: 600px;
+      display: flex;
+      justify-content: space-around;
+      flex: 1;
+      a {
+        font-size: 24px;
+        color: #c8bcbc;
+        font-weight: bold;
+        margin: 10px;
+        transition: 0.5s;
+        &.router-link-exact-active {
+          color: #ffffff;
+          font-weight: bold;
+          text-decoration: underline;
+          transition: 0.5s;
+        }
+      }
+      :hover {
+        color: #ffffff;
+        text-decoration: none;
+      }
     }
   }
 }
