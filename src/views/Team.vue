@@ -92,6 +92,7 @@ html,
 body {
   max-width: 100%;
   overflow-x: hidden;
+  background: #f7e9a0;
 }
 .home-team-wrapper {
   background: #f7e9a0;
