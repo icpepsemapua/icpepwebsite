@@ -59,8 +59,7 @@ export default {
     },
   },
   watch: {
-    $route(to, from) {
-      console.log("to, ", JSON.stringify({ to, from }));
+    $route(to) {
       switch (to.path) {
         default: {
           document.body.className = (to.path || "").replace("/", "");
