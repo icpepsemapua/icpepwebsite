@@ -29,41 +29,43 @@
         </div>
       </div>
     </div>
-    <div class="art-used">
-      <img src="../assets/ArtUsedText.svg" class="art-used-text" />
-    </div>
-    <div class="art-container">
-      <img src="../assets/ArtUsed.png" class="art" />
-      <p class="artist">Cristelle Corpuz</p>
-    </div>
-    <div class="divider"></div>
-    <div class="officers-list">
-      <div class="header-officer">ICPEP.SE OFFICERS</div>
-      <div class="profile-officers-wrapper">
-        <TeamProfiles
-          v-for="officer in officers"
-          :key="officer.id"
-          :name="officer.name"
-          :role="officer.role"
-          :img="officer.img"
-        />
+    <div class="second-container">
+      <div class="art-used">
+        <img src="../assets/ArtUsedText.svg" class="art-used-text" />
       </div>
-    </div>
-    <div class="divider"></div>
-    <div class="officers-list web">
-      <div class="header-officer">WEB DEVELOPMENT TEAM</div>
-      <div class="profile-officers-wrapper">
-        <TeamProfiles
-          v-for="officer in webdev"
-          :key="officer.id"
-          :name="officer.name"
-          :img="officer.img"
-        />
+      <div class="art-container">
+        <img src="../assets/ArtUsed.png" class="art" />
+        <p class="artist">Cristelle Corpuz</p>
       </div>
-    </div>
-    <div class="divider"></div>
-    <div class="end-text">
-      JOIN AND BE THE NEXT BUILDERS OF ICpEP.SE - MAPÚA!
+      <div class="divider"></div>
+      <div class="officers-list">
+        <div class="header-officer">ICPEP.SE OFFICERS</div>
+        <div class="profile-officers-wrapper">
+          <TeamProfiles
+            v-for="officer in officers"
+            :key="officer.id"
+            :name="officer.name"
+            :role="officer.role"
+            :img="officer.img"
+          />
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="officers-list web">
+        <div class="header-officer">WEB DEVELOPMENT TEAM</div>
+        <div class="profile-officers-wrapper">
+          <TeamProfiles
+            v-for="officer in webdev"
+            :key="officer.id"
+            :name="officer.name"
+            :img="officer.img"
+          />
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="end-text">
+        JOIN AND BE THE NEXT BUILDERS OF ICpEP.SE - MAPÚA!
+      </div>
     </div>
   </div>
 </template>
@@ -92,12 +94,12 @@ html,
 body {
   max-width: 100%;
   overflow-x: hidden;
-  background: #f7e9a0;
 }
 .home-team-wrapper {
-  background: #f7e9a0;
+  background-color: #f7e9a0;
   position: relative;
   padding: 5vw 0;
+  z-index: 2;
   @media only screen and (max-width: 900px) {
     padding: 3vw;
   }
@@ -250,46 +252,6 @@ body {
     }
   }
 }
-.art-used {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  @media only screen and (max-width: 1400px) {
-    bottom: -20px;
-  }
-  @media only screen and (max-width: 500px) {
-    bottom: -10px;
-  }
-}
-
-.art-used-text {
-  position: relative;
-  width: 100%;
-  height: 16vw;
-  object-fit: cover;
-  transform: skewY(-3.87deg);
-  transform-origin: top right;
-  margin-bottom: 60px;
-}
-
-.art-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 80%;
-  margin: 0 auto;
-  margin-top: 30px;
-  @media only screen and (max-width: 1400px) {
-    max-width: 90%;
-  }
-}
-.artist {
-  font-family: "VT323", monospace;
-  color: #f76d6d;
-  font-size: 70px;
-  width: 90%;
-  margin: 0;
-  text-align: left;
-}
 .home-team-wrapper::before {
   position: absolute;
   content: "";
@@ -302,62 +264,104 @@ body {
   transform-origin: top right;
   z-index: -1;
 }
-.officers-list {
-  // &.web {}
-  .header-officer {
-    font-family: "Roboto", sans-serif;
+.second-container {
+  z-index: -2;
+  background: white;
+
+  .art-used {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    @media only screen and (max-width: 1400px) {
+      bottom: -20px;
+    }
+    @media only screen and (max-width: 500px) {
+      bottom: -10px;
+    }
+  }
+  .art-used-text {
+    position: relative;
+    width: 100%;
+    height: 16vw;
+    object-fit: cover;
+    transform: skewY(-3.87deg);
+    transform-origin: top right;
+    margin-bottom: 60px;
+  }
+  .art-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    margin: 0 auto;
+    padding-top: 30px;
+    @media only screen and (max-width: 1400px) {
+      max-width: 90%;
+    }
+  }
+  .artist {
+    font-family: "VT323", monospace;
+    color: #f76d6d;
+    font-size: 70px;
+    width: 90%;
+    margin: 0;
+    text-align: left;
+  }
+  .officers-list {
+    // &.web {}
+    .header-officer {
+      font-family: "Roboto", sans-serif;
+      font-style: normal;
+      font-weight: 900;
+      padding: 2vw;
+      font-size: 5rem;
+      text-align: center;
+      align-items: center;
+      letter-spacing: 0.2em;
+      @media only screen and (max-width: 800px) {
+        font-size: 2rem;
+      }
+      color: #24315e;
+    }
+    .profile-officers-wrapper {
+      justify-items: center;
+      margin: 0 15vw;
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      @media only screen and (max-width: 1700px) {
+        grid-template-columns: auto auto auto;
+        margin: 0 10vw;
+      }
+      @media only screen and (max-width: 1500px) {
+        grid-template-columns: auto auto;
+        margin: 0 8vw;
+      }
+      @media only screen and (max-width: 600px) {
+        grid-template-columns: auto;
+        margin: 0 2vw;
+      }
+    }
+  }
+  .divider {
+    margin: 3vw auto;
+    width: 70vw;
+    border: 5px solid #a8d1e7;
+  }
+  .end-text {
+    /* JOIN AND BE THE NEXT BUILDERS OF ICpEP.SE - MAPUA! */
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    font-family: Roboto;
     font-style: normal;
     font-weight: 900;
-    padding: 2vw;
-    font-size: 5rem;
-    text-align: center;
-    align-items: center;
-    letter-spacing: 0.2em;
-    @media only screen and (max-width: 800px) {
-      font-size: 2rem;
-    }
+    font-size: 30px;
+    /* identical to box height, or 120% */
+    display: flex;
+    justify-content: center;
+    letter-spacing: 0.1em;
+
     color: #24315e;
+
+    text-shadow: 2px 2px 0px #f7e9a0;
   }
-  .profile-officers-wrapper {
-    justify-items: center;
-    margin: 0 15vw;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    @media only screen and (max-width: 1700px) {
-      grid-template-columns: auto auto auto;
-      margin: 0 10vw;
-    }
-    @media only screen and (max-width: 1500px) {
-      grid-template-columns: auto auto;
-      margin: 0 8vw;
-    }
-    @media only screen and (max-width: 600px) {
-      grid-template-columns: auto;
-      margin: 0 2vw;
-    }
-  }
-}
-
-.divider {
-  margin: 3vw auto;
-  width: 70vw;
-  border: 5px solid #a8d1e7;
-}
-
-.end-text {
-  /* JOIN AND BE THE NEXT BUILDERS OF ICpEP.SE - MAPUA! */
-  margin-bottom: 40px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 30px;
-  /* identical to box height, or 120% */
-  display: flex;
-  justify-content: center;
-  letter-spacing: 0.1em;
-
-  color: #24315e;
-
-  text-shadow: 2px 2px 0px #f7e9a0;
 }
 </style>
