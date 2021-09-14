@@ -27,9 +27,8 @@
           <div class="event-button">GO TO EVENT</div>
         </div>
       </div>
-      <img id="mapua-bg" src="../assets/Mapua.png" />
-      <img id="footer-image" src="../assets/Flag.png" />
     </div>
+    <div id="footer-image"></div>
   </div>
 </template>
 
@@ -68,12 +67,17 @@ p {
 .home {
   .img-container {
     position: relative;
+    background-image: url("../assets/Mapua.png");
+    height: 964px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     .current-event {
-      position: absolute;
       left: 0;
       right: 0;
-      top: 50%;
-      transform: translateY(-50%);
       text-align: center;
       background: rgba(0, 0, 0, 0.486);
       display: flex;
@@ -117,20 +121,24 @@ p {
         }
       }
     }
-
-    #mapua-bg {
-      min-width: 100%;
-    }
-    #footer-image {
-      position: absolute;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      opacity: 0.95;
-      mix-blend-mode: darken;
-      object-fit: fill;
-      width: 100%;
-    }
+  }
+  #footer-image {
+    background-image: url("../assets/Flag.png");
+    // background-color: green;
+    height: 154px;
+    background-size: 100% 154px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-bottom: -91px;
+    margin-top: -89px;
+    // position: absolute;
+    // right: 0;
+    // left: 0;
+    // bottom: 0;
+    opacity: 0.95;
+    mix-blend-mode: darken;
+    object-fit: fill;
+    width: 100%;
   }
 }
 </style>
