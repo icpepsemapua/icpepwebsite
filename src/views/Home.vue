@@ -66,9 +66,10 @@ p {
 
 .home {
   .img-container {
+    padding: 130px 0;
     position: relative;
     background-image: url("../assets/Mapua.png");
-    height: 964px;
+    min-height: 964px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: center;
@@ -98,6 +99,7 @@ p {
         margin: auto;
         @media only screen and (max-width: 700px) {
           width: 40%;
+          margin-top: 20px;
         }
       }
       .event-container {
@@ -129,9 +131,9 @@ p {
     background-size: 100% 154px;
     background-repeat: no-repeat;
     background-position: center center;
-    margin-bottom: -91px;
-    margin-top: -89px;
-    // position: absolute;
+    // margin-bottom: -91px;
+    margin-top: -130px;
+    position: absolute;
     // right: 0;
     // left: 0;
     // bottom: 0;
