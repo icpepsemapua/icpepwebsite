@@ -10,7 +10,16 @@ export default createStore({
   },
   mutations: {
     obtainOfficersRows(state, officerData) {
-      state.officers = officerData;
+      let officersArray = [];
+      for (let i = 1; i < officerData.length; i++) {
+        officersArray.push({
+          id: i,
+          name: officerData[i][0],
+          role: officerData[i][1],
+          img: officerData[i][2],
+        });
+      }
+      state.officers = officersArray;
       console.log("Hellowwww", state.officers);
     },
   },
