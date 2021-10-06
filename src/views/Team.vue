@@ -86,6 +86,15 @@ export default {
       webdev,
     };
   },
+  computed: {
+    officersFromStore() {
+      console.log(this.$store.getters.getOfficers);
+      return this.$store.getters.getOfficers;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("obtainOfficersRows");
+  },
 };
 </script>
 
