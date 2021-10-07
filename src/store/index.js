@@ -1,5 +1,13 @@
 import { createStore } from "vuex";
 
+const convertImgURL = (imgURL) => {
+  const extractedImgID =
+    imgURL.replace("https://drive.google.com/file/d/", "").split("/")[0] || "";
+  if (extractedImgID !== ".") {
+    return `https://drive.google.com/uc?export=view&id=${extractedImgID}`;
+  } else return imgURL;
+};
+
 export default createStore({
   state: {
     officers: [],
@@ -16,7 +24,7 @@ export default createStore({
           id: i,
           name: officerData[i][0],
           role: officerData[i][1],
-          img: officerData[i][2],
+          img: convertImgURL(officerData[i][2]),
         });
       }
       state.officers = officersArray;
