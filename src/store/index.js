@@ -1,4 +1,8 @@
 import { createStore } from "vuex";
+const urlbase = "https://sheets.googleapis.com/v4/spreadsheets/";
+const sheetID = "1KW7le81HyDx0zvG0wlReLqcEKyFBlBbOTQFawXMmcxc";
+const range = "";
+const key = "AIzaSyDtFVMn_pbQvGR8Q5gRf3jqYjb90VxJKiI";
 
 const convertImgURL = (imgURL) => {
   const extractedImgID =
@@ -28,17 +32,23 @@ export default createStore({
         });
       }
       state.officers = officersArray;
-      console.log("Hellowwww", state.officers);
+    },
+    obtainWebDevRows(state, webDevData) {
+      let webDevArray = [];
+      for (let i = 1; i < webDevData.length; i++) {
+        webDevArray.push({
+          id: i,
+          name: webDevData[i][0],
+          img: convertImgURL(webDevData[i][1]),
+        });
+      }
+      state.webdev = webDevArray;
+      console.log("Hellowwww", state.webdev);
     },
   },
   actions: {
     obtainOfficersRows({ commit }) {
-      const urlbase = "https://sheets.googleapis.com/v4/spreadsheets/";
       const sheetName = "Officers";
-      const sheetID = "1KW7le81HyDx0zvG0wlReLqcEKyFBlBbOTQFawXMmcxc";
-      const range = "";
-      const key = "AIzaSyDtFVMn_pbQvGR8Q5gRf3jqYjb90VxJKiI";
-
       fetch(
         `${urlbase}${sheetID}/values/${sheetName}${
           range ? "!" + range : ""
@@ -54,10 +64,30 @@ export default createStore({
         })
         .catch((e) => console.log(e));
     },
+    obtainWebDevRows({ commit }) {
+      const sheetName = "Web Team";
+      fetch(
+        `${urlbase}${sheetID}/values/${sheetName}${
+          range ? "!" + range : ""
+        }?key=${key}`
+      )
+        .then((res) => {
+          if (res.ok) {
+            res
+              .json()
+              .then((e) => commit("obtainWebDevRows", e.values))
+              .catch((error) => console.log(error));
+          }
+        })
+        .catch((e) => console.log(e));
+    },
   },
   getters: {
     getOfficers(state) {
       return state.officers;
+    },
+    getWebDev(state) {
+      return state.webdev;
     },
   },
   modules: {},
