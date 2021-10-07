@@ -7,7 +7,7 @@ const key = "AIzaSyDtFVMn_pbQvGR8Q5gRf3jqYjb90VxJKiI";
 const convertImgURL = (imgURL) => {
   const extractedImgID =
     imgURL.replace("https://drive.google.com/file/d/", "").split("/")[0] || "";
-  if (extractedImgID !== ".") {
+  if (extractedImgID !== "." || extractedImgID !== "") {
     return `https://drive.google.com/uc?export=view&id=${extractedImgID}`;
   } else return imgURL;
 };
