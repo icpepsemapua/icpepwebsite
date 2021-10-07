@@ -2,7 +2,7 @@
   <div class="events">
     <div class="events__container">
       <EventItem
-        v-for="eventArticle in eventArticles"
+        v-for="eventArticle in eventsFromStore"
         :key="eventArticle.id"
         :img="eventArticle.img"
         :title="eventArticle.title"
@@ -37,7 +37,6 @@
 <script>
 import EventItem from "../components/EventItem.vue";
 import EventItemBottom from "../components/EventBottomItem.vue";
-import { eventArticles } from "../assets/events";
 import { eventsBottom } from "../assets/eventsBottom";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
@@ -55,6 +54,11 @@ export default {
     Pagination,
     Navigation,
   },
+  computed: {
+    eventsFromStore() {
+      return this.$store.getters.getEvents;
+    },
+  },
   methods: {
     windowSizeChange() {
       if (window.innerWidth <= 1450) {
@@ -67,10 +71,10 @@ export default {
   mounted() {
     this.windowSizeChange();
     window.addEventListener("resize", this.windowSizeChange);
+    this.$store.dispatch("obtainEventsRows");
   },
   setup() {
     return {
-      eventArticles,
       eventsBottom,
     };
   },

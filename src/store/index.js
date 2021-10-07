@@ -12,6 +12,20 @@ const convertImgURL = (imgURL) => {
   } else return imgURL;
 };
 
+const convertDate = (date, time) => {
+  const dateArray = date.split("/");
+  const timeArray = time.split(":");
+  console.log(dateArray);
+  console.log(timeArray);
+  return new Date(
+    dateArray[2],
+    dateArray[0] - 1,
+    dateArray[1],
+    timeArray[0],
+    timeArray[1]
+  );
+};
+
 export default createStore({
   state: {
     officers: [],
@@ -43,7 +57,23 @@ export default createStore({
         });
       }
       state.webdev = webDevArray;
-      console.log("Hellowwww", state.webdev);
+    },
+    obtainEventsRows(state, eventData) {
+      let eventArray = [];
+      for (let i = 1; i < eventData.length; i++) {
+        eventArray.push({
+          id: i,
+          img: convertImgURL(eventData[i][0]),
+          title: eventData[i][1],
+          type: eventData[i][2],
+          desc: eventData[i][3],
+          date: convertDate(eventData[i][4], eventData[i][5]),
+          endDate: convertDate(eventData[i][6], eventData[i][7]),
+          showEventButton: eventData[i][8],
+        });
+      }
+      state.events = eventArray;
+      console.log("Hellowwww", state.events);
     },
   },
   actions: {
@@ -81,6 +111,23 @@ export default createStore({
         })
         .catch((e) => console.log(e));
     },
+    obtainEventsRows({ commit }) {
+      const sheetName = "Events";
+      fetch(
+        `${urlbase}${sheetID}/values/${sheetName}${
+          range ? "!" + range : ""
+        }?key=${key}`
+      )
+        .then((res) => {
+          if (res.ok) {
+            res
+              .json()
+              .then((e) => commit("obtainEventsRows", e.values))
+              .catch((error) => console.log(error));
+          }
+        })
+        .catch((e) => console.log(e));
+    },
   },
   getters: {
     getOfficers(state) {
@@ -88,6 +135,9 @@ export default createStore({
     },
     getWebDev(state) {
       return state.webdev;
+    },
+    getEvents(state) {
+      return state.events;
     },
   },
   modules: {},

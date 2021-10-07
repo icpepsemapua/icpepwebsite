@@ -72,21 +72,11 @@
 
 <script>
 import TeamProfiles from "../components/TeamProfiles.vue";
-import { webdev } from "../assets/webdev";
 // import { reactive } from "vue";
 export default {
   components: { TeamProfiles },
-  setup() {
-    // const state = reactive({
-    //   officer: officers,
-    // });
-    return {
-      webdev,
-    };
-  },
   computed: {
     officersFromStore() {
-      console.log(this.$store.getters.getOfficers);
       return this.$store.getters.getOfficers;
     },
     webdevFromStore() {
