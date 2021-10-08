@@ -12,18 +12,22 @@ const convertImgURL = (imgURL) => {
   } else return `https://drive.google.com/uc?export=view&id=${extractedImgID}`;
 };
 
-const convertDate = (date, time) => {
+const convertDate = (date, time = []) => {
   const dateArray = date.split("/");
-  const timeArray = time.split(":");
-  console.log(dateArray);
-  console.log(timeArray);
-  return new Date(
-    dateArray[2],
-    dateArray[0] - 1,
-    dateArray[1],
-    timeArray[0],
-    timeArray[1]
-  );
+  console.log(time.length);
+  if (time.length > 0) {
+    const timeArray = time.split(":");
+    return new Date(
+      dateArray[2],
+      dateArray[0] - 1,
+      dateArray[1],
+      timeArray[0],
+      timeArray[1]
+    );
+  } else {
+    console.log(dateArray);
+    return new Date(dateArray[2], dateArray[0] - 1, dateArray[1]);
+  }
 };
 
 const convertBoolean = (boolString) => {
@@ -40,7 +44,7 @@ export default createStore({
     webdev: [],
     events: [],
     eventsBottom: [],
-    mainEvent: [],
+    mainEvent: {},
   },
   mutations: {
     obtainOfficersRows(state, officerData) {
@@ -92,6 +96,15 @@ export default createStore({
         });
       }
       state.eventsBottom = eventsBottomArray;
+    },
+    obtainMainEvent(state, mainEventData) {
+      state.mainEvent = {
+        id: 1,
+        img: convertImgURL(mainEventData[1][0]),
+        title: mainEventData[1][1],
+        description: mainEventData[1][2],
+        deadline: convertDate(mainEventData[1][3]),
+      };
     },
   },
   actions: {
@@ -163,6 +176,23 @@ export default createStore({
         })
         .catch((e) => console.log(e));
     },
+    obtainMainEvent({ commit }) {
+      const sheetName = "Main Event";
+      fetch(
+        `${urlbase}${sheetID}/values/${sheetName}${
+          range ? "!" + range : ""
+        }?key=${key}`
+      )
+        .then((res) => {
+          if (res.ok) {
+            res
+              .json()
+              .then((e) => commit("obtainMainEvent", e.values))
+              .catch((error) => console.log(error));
+          }
+        })
+        .catch((e) => console.log(e));
+    },
   },
   getters: {
     getOfficers(state) {
@@ -176,6 +206,9 @@ export default createStore({
     },
     getBottomEvents(state) {
       return state.eventsBottom;
+    },
+    getMainEvent(state) {
+      return state.mainEvent;
     },
   },
   modules: {},
