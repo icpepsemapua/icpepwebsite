@@ -18,7 +18,7 @@
         :items-to-show="carouselNumber"
         class="carousel-inner-container"
       >
-        <slide v-for="slide in eventsBottom" :key="slide">
+        <slide v-for="slide in eventsBottomFromStore" :key="slide">
           <EventItemBottom
             :key="slide.id"
             :img="slide.img"
@@ -37,7 +37,7 @@
 <script>
 import EventItem from "../components/EventItem.vue";
 import EventItemBottom from "../components/EventBottomItem.vue";
-import { eventsBottom } from "../assets/eventsBottom";
+// import { eventsBottom } from "../assets/eventsBottom";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 export default {
@@ -58,6 +58,9 @@ export default {
     eventsFromStore() {
       return this.$store.getters.getEvents;
     },
+    eventsBottomFromStore() {
+      return this.$store.getters.getBottomEvents;
+    },
   },
   methods: {
     windowSizeChange() {
@@ -72,12 +75,13 @@ export default {
     this.windowSizeChange();
     window.addEventListener("resize", this.windowSizeChange);
     this.$store.dispatch("obtainEventsRows");
+    this.$store.dispatch("obtainBottomEventsRows");
   },
-  setup() {
-    return {
-      eventsBottom,
-    };
-  },
+  // setup() {
+  //   return {
+  //     eventsBottom,
+  //   };
+  // },
 };
 </script>
 

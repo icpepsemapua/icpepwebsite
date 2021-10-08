@@ -7,9 +7,9 @@ const key = "AIzaSyDtFVMn_pbQvGR8Q5gRf3jqYjb90VxJKiI";
 const convertImgURL = (imgURL) => {
   const extractedImgID =
     imgURL.replace("https://drive.google.com/file/d/", "").split("/")[0] || "";
-  if (extractedImgID !== "." || extractedImgID !== "") {
-    return `https://drive.google.com/uc?export=view&id=${extractedImgID}`;
-  } else return imgURL;
+  if (extractedImgID === "." || extractedImgID === "") {
+    return imgURL;
+  } else return `https://drive.google.com/uc?export=view&id=${extractedImgID}`;
 };
 
 const convertDate = (date, time) => {
@@ -24,6 +24,14 @@ const convertDate = (date, time) => {
     timeArray[0],
     timeArray[1]
   );
+};
+
+const convertBoolean = (boolString) => {
+  if (boolString === "TRUE") {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 export default createStore({
@@ -69,11 +77,21 @@ export default createStore({
           desc: eventData[i][3],
           date: convertDate(eventData[i][4], eventData[i][5]),
           endDate: convertDate(eventData[i][6], eventData[i][7]),
-          showEventButton: eventData[i][8],
+          showEventButton: convertBoolean(eventData[i][8]),
         });
       }
       state.events = eventArray;
-      console.log("Hellowwww", state.events);
+    },
+    obtainBottomEventsRows(state, eventBottomData) {
+      let eventsBottomArray = [];
+      for (let i = 1; i < eventBottomData.length; i++) {
+        eventsBottomArray.push({
+          id: i,
+          img: convertImgURL(eventBottomData[i][0]),
+          title: eventBottomData[i][1],
+        });
+      }
+      state.eventsBottom = eventsBottomArray;
     },
   },
   actions: {
@@ -128,6 +146,23 @@ export default createStore({
         })
         .catch((e) => console.log(e));
     },
+    obtainBottomEventsRows({ commit }) {
+      const sheetName = "EventsBottom";
+      fetch(
+        `${urlbase}${sheetID}/values/${sheetName}${
+          range ? "!" + range : ""
+        }?key=${key}`
+      )
+        .then((res) => {
+          if (res.ok) {
+            res
+              .json()
+              .then((e) => commit("obtainBottomEventsRows", e.values))
+              .catch((error) => console.log(error));
+          }
+        })
+        .catch((e) => console.log(e));
+    },
   },
   getters: {
     getOfficers(state) {
@@ -138,6 +173,9 @@ export default createStore({
     },
     getEvents(state) {
       return state.events;
+    },
+    getBottomEvents(state) {
+      return state.eventsBottom;
     },
   },
   modules: {},
