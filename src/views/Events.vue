@@ -2,7 +2,7 @@
   <div class="events">
     <div class="events__container">
       <EventItem
-        v-for="eventArticle in eventArticles"
+        v-for="eventArticle in eventsFromStore"
         :key="eventArticle.id"
         :img="eventArticle.img"
         :title="eventArticle.title"
@@ -18,7 +18,7 @@
         :items-to-show="carouselNumber"
         class="carousel-inner-container"
       >
-        <slide v-for="slide in eventsBottom" :key="slide">
+        <slide v-for="slide in eventsBottomFromStore" :key="slide">
           <EventItemBottom
             :key="slide.id"
             :img="slide.img"
@@ -37,8 +37,7 @@
 <script>
 import EventItem from "../components/EventItem.vue";
 import EventItemBottom from "../components/EventBottomItem.vue";
-import { eventArticles } from "../assets/events";
-import { eventsBottom } from "../assets/eventsBottom";
+// import { eventsBottom } from "../assets/eventsBottom";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 export default {
@@ -55,6 +54,14 @@ export default {
     Pagination,
     Navigation,
   },
+  computed: {
+    eventsFromStore() {
+      return this.$store.getters.getEvents;
+    },
+    eventsBottomFromStore() {
+      return this.$store.getters.getBottomEvents;
+    },
+  },
   methods: {
     windowSizeChange() {
       if (window.innerWidth <= 1450) {
@@ -67,13 +74,14 @@ export default {
   mounted() {
     this.windowSizeChange();
     window.addEventListener("resize", this.windowSizeChange);
+    this.$store.dispatch("obtainEventsRows");
+    this.$store.dispatch("obtainBottomEventsRows");
   },
-  setup() {
-    return {
-      eventArticles,
-      eventsBottom,
-    };
-  },
+  // setup() {
+  //   return {
+  //     eventsBottom,
+  //   };
+  // },
 };
 </script>
 

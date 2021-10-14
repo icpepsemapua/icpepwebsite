@@ -19,6 +19,16 @@
         {{ date.getHours() >= 12 ? " PM" : " AM" }}
 
         -
+        <span
+          v-if="
+            date.getMonth() !== endDate.getMonth() ||
+              date.getFullYear() !== endDate.getFullYear() ||
+              date.getDate() !== endDate.getDate()
+          "
+        >
+          {{ months[endDate.getMonth()] }} {{ endDate.getDate() }},
+          {{ endDate.getFullYear() }} |
+        </span>
         <span v-if="endDate.getHours() % 12 === 0">12</span>
         <span v-else>{{ endDate.getHours() % 12 }}</span>
         :{{ endDate.getMinutes() > 0 ? endDate.getMinutes() : "00" }}
