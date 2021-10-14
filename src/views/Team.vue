@@ -42,7 +42,7 @@
         <div class="header-officer">ICPEP.SE OFFICERS</div>
         <div class="profile-officers-wrapper">
           <TeamProfiles
-            v-for="officer in officers"
+            v-for="officer in officersFromStore"
             :key="officer.id"
             :name="officer.name"
             :role="officer.role"
@@ -72,7 +72,7 @@
 
 <script>
 import TeamProfiles from "../components/TeamProfiles.vue";
-import { officers } from "../assets/officers";
+// import { officers } from "../assets/officers";
 import { webdev } from "../assets/webdev";
 // import { reactive } from "vue";
 export default {
@@ -82,9 +82,18 @@ export default {
     //   officer: officers,
     // });
     return {
-      officers,
+      // officers,
       webdev,
     };
+  },
+  computed: {
+    officersFromStore() {
+      console.log(this.$store.getters.getOfficers);
+      return this.$store.getters.getOfficers;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("obtainOfficersRows");
   },
 };
 </script>
