@@ -5,24 +5,21 @@
       <div class="current-event">
         <img id="event" src="../assets/EECE_Colloq.png" />
         <div class="event-container">
-          <h1>40TH EECE Thesis Colloquium</h1>
+          <h1>{{ mainEventFromStore.title }}</h1>
           <p>
-            Greetings to all 2Q2021 Thesis 2 and Thesis 3 students!
-          </p>
-
-          <p>
-            The School of Electrical, Electronics and Computer Engineering is
-            glad to announce this term’s 40th EECE Thesis Colloquium.
-          </p>
-
-          <p>
-            You can register by clicking the button below. Kindly join the
-            Facebook group as well for further announcements:
-            www.facebook.com/groups/40theececolloqium/
+            {{ mainEventFromStore.description }}
           </p>
           <div class="event-date">
             <p>Deadline of Pre-Registration:</p>
-            <p>January 22, 2020 (Week 7, Friday)</p>
+            <p v-if="mainEventFromStore.deadline">
+              <!-- method doesnt exist on null or undefined, 
+              the initial calling of the states are empty i.e. {}.
+              so v-if will check if it has loaded
+               -->
+              {{ months[mainEventFromStore.deadline.getMonth()] }}
+              {{ mainEventFromStore.deadline.getDate() }},
+              {{ mainEventFromStore.deadline.getFullYear() }}
+            </p>
           </div>
           <div class="event-button">GO TO EVENT</div>
         </div>
@@ -38,6 +35,30 @@
 export default {
   name: "Home",
   components: {},
+  computed: {
+    mainEventFromStore() {
+      return this.$store.getters.getMainEvent;
+    },
+    months() {
+      return [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+    },
+  },
+  mounted() {
+    this.$store.dispatch("obtainMainEvent");
+  },
 };
 </script>
 

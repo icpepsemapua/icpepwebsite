@@ -42,7 +42,7 @@
         <div class="header-officer">ICPEP.SE OFFICERS</div>
         <div class="profile-officers-wrapper">
           <TeamProfiles
-            v-for="officer in officers"
+            v-for="officer in officersFromStore"
             :key="officer.id"
             :name="officer.name"
             :role="officer.role"
@@ -55,7 +55,7 @@
         <div class="header-officer">WEB DEVELOPMENT TEAM</div>
         <div class="profile-officers-wrapper">
           <TeamProfiles
-            v-for="officer in webdev"
+            v-for="officer in webdevFromStore"
             :key="officer.id"
             :name="officer.name"
             :img="officer.img"
@@ -72,19 +72,20 @@
 
 <script>
 import TeamProfiles from "../components/TeamProfiles.vue";
-import { officers } from "../assets/officers";
-import { webdev } from "../assets/webdev";
 // import { reactive } from "vue";
 export default {
   components: { TeamProfiles },
-  setup() {
-    // const state = reactive({
-    //   officer: officers,
-    // });
-    return {
-      officers,
-      webdev,
-    };
+  computed: {
+    officersFromStore() {
+      return this.$store.getters.getOfficers;
+    },
+    webdevFromStore() {
+      return this.$store.getters.getWebDev;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("obtainOfficersRows");
+    this.$store.dispatch("obtainWebDevRows");
   },
 };
 </script>
